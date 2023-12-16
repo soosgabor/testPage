@@ -35,7 +35,7 @@ const loadPrevious = () => {
 
 const loadUsers = async (page, limit) => {
     try {
-        responseData.value = await axios.get('/api/users', {
+        responseData.value = await axios.get('https://jsonplaceholder.typicode.com/users', {
             params: {
                 page,
                 limit

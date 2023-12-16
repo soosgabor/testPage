@@ -1,7 +1,7 @@
 <template>
   <div data-testid="signup-page">
     <form id="form-sign-up">
-      <h1>Sign In</h1>
+      <h1>Log In</h1>
       <Input id="username" label="Username" v-model="username" />
       <Input id="password" label="Password" v-model="password" type="password" />
 
