@@ -1,5 +1,6 @@
 <template>
     <div data-testid="home-page">
+        <h1>Törj fel, ha tudsz!</h1>
         <user-list></user-list>
     </div>
 </template>
