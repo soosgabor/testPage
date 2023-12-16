@@ -54,7 +54,7 @@ const submit = async () => {
     password: password.value
   }
   try {
-    responseData.value = await axios.post('/api/users', newUser)
+    responseData.value = await axios.post('https://hoaxify-backend.onrender.com/api/users', newUser)
     signUpSuccess.value = true
   } catch (error) {
     if (error.response.status === 400) {

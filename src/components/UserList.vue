@@ -35,7 +35,7 @@ const loadPrevious = () => {
 
 const loadUsers = async (page, limit) => {
     try {
-        responseData.value = await axios.get('https://jsonplaceholder.typicode.com/users', {
+        responseData.value = await axios.get('https://hoaxify-backend.onrender.com/api/users', {
             params: {
                 page,
                 limit
@@ -46,6 +46,7 @@ const loadUsers = async (page, limit) => {
             actPage.value = responseData.value.data.page
             totalPages.value = responseData.value.data.total_page
         }
+        console.log(users.value);
     } catch (error) {
         console.log(error)
     }
