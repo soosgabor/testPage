@@ -1,15 +1,15 @@
 import axios from "axios";
 
 export const signUp = (body) => {
-  return axios.post("/api/1.0/users", body);
+  return axios.post("/api/users", body);
 };
 
 export const activate = (token) => {
-  return axios.post("/api/1.0/users/token/" + token);
+  return axios.post("/api/users/token/" + token);
 };
 
 export const loadUsers = (page) => {
-  return axios.get("/api/1.0/users", {
+  return axios.get("/api/users", {
     params: {
       page,
       size: 3,
@@ -18,9 +18,9 @@ export const loadUsers = (page) => {
 };
 
 export const getUserById = (id) => {
-  return axios.get("/api/1.0/users/" + id);
+  return axios.get("/api/users/" + id);
 };
 
 export const login = (creds) => {
-  return axios.post("/api/1.0/auth", creds);
+  return axios.post("/api/auth", creds);
 };

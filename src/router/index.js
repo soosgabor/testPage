@@ -23,6 +23,11 @@ const router = createRouter({
       component: LoginView
     },
     {
+      path: '/user/:id',
+      name: 'User',
+      component: UserView
+    },
+    {
       path: '/activate/:token',
       name: 'Activation',
       component: AccountActivationView,
