@@ -2,7 +2,6 @@
     <div class="card">
       <div class="card-header text-center">
         <h3>Users</h3>
-        {{ users }}
         <ul class="list-group list-group-flush">
           <li
             class="list-group-item list-group-item-action"
