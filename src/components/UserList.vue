@@ -59,7 +59,7 @@
   
   const loadUsers = async (page, limit) => {
     try {
-      responseData.value = await axios.get("/api/users", {
+      responseData.value = await axios.get("https://hoaxify-backend.onrender.com/api/users", {
         params: {
           page,
           limit,
