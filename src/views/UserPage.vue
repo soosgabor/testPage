@@ -1,36 +1,31 @@
 <template>
   <div data-testid="user-page">
-    <ProfileCard :user="user" v-if="!pendingApiCall && !failResponse" />
-    <div class="alert alert-secondary text-center" v-if="pendingApiCall">
-      <Spinner size="normal" />
-    </div>
-    <div class="alert alert-danger text-center" v-if="failResponse">
-      {{ failResponse }}
-    </div>
+    <h1 v-if="user">{{ user.username }}</h1>
+    {{ $route.params.id }}
   </div>
 </template>
-<script>
-import { getUserById } from "../api/apiCalls";
-import ProfileCard from "../components/ProfileCard";
-import Spinner from "../components/Spinner";
-export default {
-  name: "UserPage",
-  components: { ProfileCard, Spinner },
-  data() {
-    return {
-      user: {},
-      pendingApiCall: true,
-      failResponse: undefined,
-    };
-  },
-  async mounted() {
-    try {
-      const response = await getUserById(this.$route.params.id);
-      this.user = response.data;
-    } catch (error) {
-      this.failResponse = error.response.data.message;
+
+<script setup>
+import axios from "axios";
+import { ref, onBeforeMount } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+let user = ref();
+
+onBeforeMount(async () => {
+  await getUserById(route.params.id);
+});
+
+const getUserById = async (id) => {
+  try {
+    user.value = await axios.get("/api/user/" + id);
+    console.log(user.value);
+    if (user.value.status === 200) {
+      user.value = user.value.data;
     }
-    this.pendingApiCall = false;
-  },
+  } catch (error) {
+    console.log(error);
+  }
 };
 </script>
