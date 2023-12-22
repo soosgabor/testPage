@@ -20,7 +20,7 @@ onBeforeMount(async () => {
 
 const getUserById = async (id) => {
   try {
-    user.value = await axios.get("/user/" + id);
+    user.value = await axios.get("https://hoaxify-backend.onrender.com/api/user/" + id);
     console.log(user.value);
     if (user.value.status === 200) {
       user.value = user.value.data;
