@@ -14,12 +14,13 @@ const route = useRoute();
 let user = ref();
 
 onBeforeMount(async () => {
-  await getUserById(route.params.id);
+  const x = await getUserById(route.params.id);
+  console.log(`x = ${x}`);
 });
 
 const getUserById = async (id) => {
   try {
-    user.value = await axios.get("/api/user/" + id);
+    user.value = await axios.get("/user/" + id);
     console.log(user.value);
     if (user.value.status === 200) {
       user.value = user.value.data;
