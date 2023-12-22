@@ -14,8 +14,7 @@ const route = useRoute();
 let user = ref();
 
 onBeforeMount(async () => {
-  const x = await getUserById(route.params.id);
-  console.log(`x = ${x}`);
+  await getUserById(route.params.id);
 });
 
 const getUserById = async (id) => {
