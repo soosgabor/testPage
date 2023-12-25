@@ -1,26 +1,28 @@
 <template>
   <div data-testid="user-page">
-    <h1 v-if="user">{{ user.username }}</h1>
-    {{ $route.params.id }}
+    <h1>User Page</h1>
+    <h2 v-if="user">{{ user.username }}</h2>
+    {{ props.id }}
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
-import { ref, onBeforeMount } from "vue";
-import { useRoute } from "vue-router";
+import { ref, onMounted } from "vue";
 
-const route = useRoute();
 let user = ref();
 
-onBeforeMount(async () => {
-  await getUserById(route.params.id);
+const props = defineProps({
+  id: String,
 });
 
-const getUserById = async (id) => {
+onMounted(async () => {
+  await getUserById();
+});
+
+const getUserById = async () => {
   try {
-    user.value = await axios.get("https://hoaxify-backend.onrender.com/api/user/" + id);
-    console.log(user.value);
+    user.value = await axios.get(`/api/user/${props.id}`);
     if (user.value.status === 200) {
       user.value = user.value.data;
     }
