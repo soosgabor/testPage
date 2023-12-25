@@ -26,7 +26,8 @@ const router = createRouter({
     {
       path: '/user/:id',
       name: 'User',
-      component: UserView
+      component: UserView,
+      props: true
     },
     {
       path: '/activate/:token',
