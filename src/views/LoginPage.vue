@@ -50,7 +50,7 @@ const submit = async () => {
   };
   try {
     apiProgress.value = true;
-    responseData.value = await axios.post("/api/auth", user);
+    responseData.value = await axios.post("https://hoaxify-backend.onrender.com/api/auth", user);
     loginSuccess.value = true;
     apiProgress.value = false;
     loginError.value = responseData.value.data.msg;
