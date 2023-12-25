@@ -22,7 +22,7 @@ onMounted(async () => {
 
 const getUserById = async () => {
   try {
-    user.value = await axios.get(`/api/user/${props.id}`);
+    user.value = await axios.get(`https://hoaxify-backend.onrender.com/api/user/${props.id}`);
     if (user.value.status === 200) {
       user.value = user.value.data;
     }
